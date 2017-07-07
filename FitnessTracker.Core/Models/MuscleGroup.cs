@@ -1,8 +1,16 @@
-﻿namespace FitnessTracker.Core.Models
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace FitnessTracker.Core.Models
 {
-    public class MuscleGroup
+    public class MuscleGroup : Entity
     {
-        public int ID { get; set; }
+        [MaxLength(50)]
         public string Name { get; set; }
+
+        public List<Exercise> PrimaryExercises { get; internal set; }
+
+        public List<ExerciseSecondaryMuscleGroup> ExerciseSecondaryMuscleGroups { get; internal set; }
     }
 }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FitnessTracker.DataAccess.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using FitnessTracker.Web.ASPNetMVC.Models;
 
 namespace FitnessTracker.Web.ASPNetMVC
 {
@@ -37,13 +31,8 @@ namespace FitnessTracker.Web.ASPNetMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //// Add framework services.
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddIdentity<ApplicationUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>()
-            //    .AddDefaultTokenProviders();
+            // Add framework services.
+            services.AddFitnessTrackerDbAndIdentityServicesSql(Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddMvc();
         }
@@ -57,7 +46,7 @@ namespace FitnessTracker.Web.ASPNetMVC
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
             }
             else

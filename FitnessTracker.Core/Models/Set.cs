@@ -4,14 +4,19 @@ using System.Text;
 
 namespace FitnessTracker.Core.Models
 {
-    class Set
+    public class Set : Entity
     {
-        public int ID { get; set; }
-        public int Line { get; set; }
-        public User PerformedBy { get; set; }
+        public int Line { get; internal set; }
+
+        public IAppUser PerformedBy { get; internal set; }
+
         public DateTime DatePerformed { get; set; }
-        public Exercise Exercise { get; set; }
-        public Repetition Repetitions { get; set; }
-        public List<Resistance> Resistances { get; set; }
+
+        public int ExerciseId { get; internal set; }
+        public Exercise Exercise { get; internal set; }
+
+        public List<Repetition> Repetitions { get; internal set; }
+
+        public List<Resistance> Resistances { get; internal set; }
     }
 }

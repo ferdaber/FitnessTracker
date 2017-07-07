@@ -1,8 +1,13 @@
-﻿namespace FitnessTracker.Core.Models
+﻿using System.Collections.Generic;
+
+namespace FitnessTracker.Core.Models
 {
-    public class Resistance
+    public class Resistance : Entity
     {
-        public int ID { get; set; }
         public ResistanceType Type { get; set; }
+
+        public List<ExerciseResistance> ExerciseResistances { get; internal set; }
+
+        public List<SetResistance> SetResistances { get; internal set; }
     }
 }
